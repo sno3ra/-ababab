@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QPushButton>
 #include <set_class.h>
+#include "timer.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -236,9 +238,12 @@ private slots:
 
     void on_ddl_7_clicked();
 
+    void on_pushButton_2_clicked();
+
 public slots:
     void update_name(QString name, int which_day, int which_class);
 private:
     Ui::MainWindow *ui;
+    timer* mytimer;
 };
 #endif // MAINWINDOW_H
