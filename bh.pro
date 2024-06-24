@@ -16,7 +16,9 @@ SOURCES += \
     mainwindow.cpp \
     register_page.cpp \
     set_class.cpp \
-    start_use.cpp
+    start_use.cpp \
+    timer.cpp \
+    timer_popup.cpp
 
 HEADERS += \
     add_dll.h \
@@ -25,7 +27,9 @@ HEADERS += \
     mainwindow.h \
     register_page.h \
     set_class.h \
-    start_use.h
+    start_use.h \
+    timer.h \
+    timer_popup.h
 
 FORMS += \
     add_dll.ui \
@@ -34,7 +38,9 @@ FORMS += \
     mainwindow.ui \
     register_page.ui \
     set_class.ui \
-    start_use.ui
+    start_use.ui \
+    timer.ui \
+    timer_popup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

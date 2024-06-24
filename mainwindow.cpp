@@ -8,6 +8,8 @@
 #include "ui_set_class.h"
 #include "add_dll.h"
 #include "ui_add_dll.h"
+#include "timer.h"
+
 #include <QApplication>
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -20,7 +22,8 @@
 #include <QListWidget>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    ,  ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow)
+    , mytimer(nullptr)
 {
     ui->setupUi(this);
     days.append(ui->mon_date);
@@ -136,6 +139,7 @@ MainWindow::MainWindow(QWidget *parent)
     ddls.append(ui->ddl_5);
     ddls.append(ui->ddl_6);
     ddls.append(ui->ddl_7);
+    // connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::on_pushButton_2_clicked);
 }
 
 MainWindow::~MainWindow()
@@ -855,7 +859,6 @@ void MainWindow::on_sun_bt12_clicked()
     MainWindow::add_class(days[6]->text(), 12, mon_class[11]->text(),username);
 }
 
-
 void MainWindow::on_expand_button_clicked()
 {
     Choosetime* ctim = new Choosetime(this);
@@ -1004,5 +1007,19 @@ void MainWindow::on_ddl_7_clicked()
         }
         MainWindow::update_ddl();
     }
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    if (!mytimer) { // robustness
+        mytimer = new timer(this);
+        qDebug("Created timer");
+    }
+    // mytimer->setGeometry(this->geometry());
+    mytimer->show();
+    qDebug("Shown timer");
+
+    this->hide();
 }
 
